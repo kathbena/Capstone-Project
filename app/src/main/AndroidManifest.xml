@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gradle.kathleenbenavides.com.flickpick">
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/popcorn"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/CustomTheme">
+        <activity
+            android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/search_name"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/detail_name"
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".SelectTheatreActivity"
+            android:label="@string/theatre_name"
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <provider
+            android:name=".MovieProvider"
+            android:authorities="gradle.kathleenbenavides.com.flickpick" />
+
+        <receiver android:name=".widget.MovieAppWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/movie_appwidget_info" />
+        </receiver>
+    </application>
+
+</manifest>

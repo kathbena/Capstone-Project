@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">FlickPick</string>
+    <string name="search_name">Search</string>
+    <string name="detail_name">Movie Details</string>
+    <string name="theatre_name">Theatres</string>
+
+    <string name="moviedb_with_genre">&amp;with_genres=</string>
+    <string name="moviedb_primary_release_date.gte">&amp;primary_release_date.gte=</string>
+    <string name="moviedb_primary_release_date.lte">&amp;primary_release_date.lte=</string>
+    <string name="moviedb_popular_url">http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&amp;</string>
+    <string name="moviedb_top_rate_url">http://api.themoviedb.org/3/movie/top_rated&amp;</string>
+    <string name="base_poster_url">http://image.tmdb.org/t/p/</string>
+    <string name="gracenote_url">http://data.tmsapi.com/v1.1/movies/showings?</string>
+    <string name="gracenote_startDate">&amp;startDate=</string>
+    <string name="gracenote_zip">&amp;zip=</string>
+    <string name="find_flick">Find A Flick</string>
+    <string name="amazon_button_string">Rent on Amazon</string>
+    <string name="search_again_button">Search Again</string>
+    <string name="amazon_url">http://amazon.com/s?field-keywords=</string>
+    <string name="movies_button_string">Find a Local Theatre</string>
+    <string name="question_one">What are you in the mood for?</string>
+    <string name="question_two">Staying in or going out?</string>
+    <string name="staying_in">Staying in</string>
+    <string name="going_out">Going out</string>
+    <string name="release_date_text">Release Date: </string>
+    <string name="rating_text">Rating: </string>
+
+    <string name="zipcode_title">ZipCode</string>
+    <string name="zipcode_update_settings">Need to update settings for location permission. </string>
+    <string name="enter_zipcode_text">Please enter zipcode: </string>
+    <string name="current_location_granted_log">Current location is granted</string>
+    <string name="user_denied_current_location">You chose to not use current location. </string>
+    <string name="denied_current_Location">User denied current location permission</string>
+    <string name="error_current_location">Problem retrieving location: </string>
+    <string name="connection_failed">Connection failed: </string>
+
+    <string name="request_url_text">Request url is: </string>
+    <string name="no_more_movies">No more movies in list</string>
+    <string name="no_results_title">No Results</string>
+    <string name="no_results_message">There were no results found for your genre. Please search again.</string>
+    <string name="error_searching">Error Searching</string>
+    <string name="error_searching_message">There was an error searching for movies.  Please try again later.</string>
+    <string name="title_unavailable">Title is currently unavailable</string>
+    <string name="overview_unavailable">Movie description is currently unavailable</string>
+
+    <string name="removing_movie_text"> User selected no, removing movie from list</string>
+
+    <string name="accessibility_searching">searching for available movies</string>
+    <string name="accessibility_done_searching">done searching for movies</string>
+</resources>

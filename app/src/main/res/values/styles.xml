@@ -1,0 +1,9 @@
+<resources>
+    <!-- New application theme. -->
+    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Main theme colors -->
+        <item name="colorPrimary">@color/toolbarColor</item>
+        <item name="colorPrimaryDark">@color/toolbarPrimaryDark</item>
+        <item name="colorAccent">@color/toolbarAccent</item>
+    </style>
+</resources>

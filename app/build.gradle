@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+//Instructions for keystore properties were from developer.android.com/studio/publish/app-signing.html#secure-key
+//create a variable and initialize to keystore.properties file
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+//Initialize new Properties() object
+def keystoreProperties = new Properties()
+//Load keystore.properties file into keyStoreProperties object
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    signingConfigs {
+
+        config {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+    //Get API keys in keystore properties
+    buildTypes.each{
+        it.buildConfigField('String', 'moviedb_api_key', keystoreProperties['moviedb_api_key'])
+        it.buildConfigField('String', 'gracenote_api_key', keystoreProperties['gracenote_api_key'])
+    }
+
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "gradle.kathleenbenavides.com.flickpick"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.android.gms:play-services-location:10.2.0'
+    compile 'com.google.android.gms:play-services-identity:10.2.0'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+}

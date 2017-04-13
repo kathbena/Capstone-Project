@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="gradle.kathleenbenavides.com.flickpick.MainActivity">
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/toolbarColor"
+        android:paddingTop="40dp"
+        android:paddingBottom="20dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:background="@color/white"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/question_one"
+                android:text="@string/question_one"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"/>
+            <Spinner
+                android:id="@+id/categories_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingBottom="15dp"
+                android:paddingTop="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/toolbarAccent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/question_two"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="20sp"
+                android:text="@string/question_two" />
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/radio_group"
+                android:checkedButton="@+id/radio_staying_in"
+                android:paddingBottom="30dp">
+                <RadioButton android:id="@+id/radio_staying_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/staying_in"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/radio_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/going_out"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/findFlickButton"
+                android:contentDescription="@string/find_flick"
+                android:text="@string/find_flick"/>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
