@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private Location location;
     private double latitude;
     private double longitude;
-    private String zipCode = "78839";
+    private String zipCode;
     private Spinner categorySpinner;
     //SavedInstanceState Constants
     private final String STAYING_IN_CONTENT = "stayingInContent";
@@ -228,14 +228,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     public void sendMessage(){
         //Intent for Search Activity
-        Intent intent = new Intent(this, SearchActivity.class);
-        intent.putExtra("EXTRA_GENRE", selectedGenreID);
-        intent.putExtra("EXTRA_GENRE_NAME", selectedGenreName);
-        intent.putExtra("EXTRA_GREATEST_DATE", greatestDateFormat);
-        intent.putExtra("EXTRA_MOST_CURRENT_DATE", mostCurrentDate);
-        intent.putExtra("STAYING_IN", stayingIn);
-        intent.putExtra("ZIPCODE", zipCode);
-        startActivity(intent);
+        //Last check for zipcode in case it is empty
+        if(zipCode != null && !zipCode.isEmpty()) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            intent.putExtra("EXTRA_GENRE", selectedGenreID);
+            intent.putExtra("EXTRA_GENRE_NAME", selectedGenreName);
+            intent.putExtra("EXTRA_GREATEST_DATE", greatestDateFormat);
+            intent.putExtra("EXTRA_MOST_CURRENT_DATE", mostCurrentDate);
+            intent.putExtra("STAYING_IN", stayingIn);
+            intent.putExtra("ZIPCODE", zipCode);
+            startActivity(intent);
+        } else {
+            String message = getString(R.string.zipcode_update_settings) + getString(R.string.enter_zipcode_text);
+            enterZipCodeDialog(message);
+        }
+
     }
 
     //Following check permissions guidelines and code from https://developer.android.com/training/permissions/requesting.html#perm-request
