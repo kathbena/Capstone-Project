@@ -39,6 +39,10 @@
             android:label="@string/theatre_name"
             android:parentActivityName=".MainActivity" >
         </activity>
+        <activity
+            android:name=".widget.WidgetRandomDetailActivity"
+            android:parentActivityName=".MainActivity" >
+        </activity>
         <provider
             android:name=".MovieProvider"
             android:authorities="gradle.kathleenbenavides.com.flickpick" />

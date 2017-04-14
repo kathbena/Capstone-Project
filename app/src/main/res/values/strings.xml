@@ -4,8 +4,8 @@
     <string name="detail_name">Movie Details</string>
     <string name="theatre_name">Theatres</string>
     <string name="apikey_prefix">api_key=</string>
-    <string name="moviedb_api_key"></string>
-    <string name="gracenote_api_key"></string>
+    <string name="moviedb_api_key">fd39b94e3a5e0d8515ef096e618b8fd8</string>
+    <string name="gracenote_api_key">t4n6q3u9r4uj8fk2jv4knzxd</string>
     <string name="moviedb_with_genre">&amp;with_genres=</string>
     <string name="moviedb_primary_release_date.gte">&amp;primary_release_date.gte=</string>
     <string name="moviedb_primary_release_date.lte">&amp;primary_release_date.lte=</string>
@@ -57,4 +57,6 @@
     <string name="unknown_uri">Unknown Uri </string>
     <string name="theatre_content">theatreContent</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="widget_title">QUICK FLICK PICK</string>
+    <string name="widget_text">Select for random flick</string>
 </resources>
