@@ -5,20 +5,23 @@ apply plugin: 'com.android.application'
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 //Initialize new Properties() object
 def keystoreProperties = new Properties()
+//Load keystore.properties file into keyStoreProperties object
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     signingConfigs {
-        release
-    }
-    //Get API keys in keystore properties if available
-    if (keystorePropertiesFile.canRead()){
-        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-        if (keystoreProperties!=null && keystoreProperties.containsKey('moviedb_api_key') && keystoreProperties.containsKey('gracenote_api_key')) {
-            buildTypes.each{
-                it.buildConfigField('String', 'moviedb_api_key', keystoreProperties['moviedb_api_key'])
-                it.buildConfigField('String', 'gracenote_api_key', keystoreProperties['gracenote_api_key'])
-            }
+        release {
+            storeFile = file(keystoreProperties['storeFile'])
+            storePassword = keystoreProperties['storePassword']
+            keyAlias = keystoreProperties['keyAlias']
+            keyPassword = keystoreProperties['keyPassword']
         }
+    }
+
+    //Get API keys in keystore properties
+    buildTypes.each{
+        it.buildConfigField('String', 'moviedb_api_key', keystoreProperties['moviedb_api_key'])
+        it.buildConfigField('String', 'gracenote_api_key', keystoreProperties['gracenote_api_key'])
     }
 
     compileSdkVersion 25
@@ -38,24 +41,6 @@ android {
             signingConfig signingConfigs.release
         }
     }
-}
-
-////Get keystore keys in keystore properties if available
-if (keystorePropertiesFile.canRead()){
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-    if (keystoreProperties!=null && keystoreProperties.containsKey('storeFile') && keystoreProperties.containsKey('storePassword') &&
-            keystoreProperties.containsKey('keyAlias') && keystoreProperties.containsKey('keyPassword')) {
-        android.signingConfigs.release.storeFile = file(keystoreProperties['storeFile'])
-        android.signingConfigs.release.storePassword = keystoreProperties['storePassword']
-        android.signingConfigs.release.keyAlias = keystoreProperties['keyAlias']
-        android.signingConfigs.release.keyPassword = keystoreProperties['keyPassword']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.release.signingConfig = null
-    }
-}else {
-    println 'signing.properties not found'
-    android.buildTypes.release.signingConfig = null
 }
 
 dependencies {
