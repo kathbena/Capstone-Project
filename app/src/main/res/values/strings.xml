@@ -49,4 +49,12 @@
 
     <string name="accessibility_searching">searching for available movies</string>
     <string name="accessibility_done_searching">done searching for movies</string>
+
+    <string name="widget_nomovies">No Movies today. Open the app to search!</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_yes">YES</string>
+    <string name="dialog_no">NO</string>
+    <string name="unknown_uri">Unknown Uri </string>
+    <string name="theatre_content">theatreContent</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

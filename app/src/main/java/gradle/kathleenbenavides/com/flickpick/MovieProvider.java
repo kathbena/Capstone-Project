@@ -71,7 +71,7 @@ public class MovieProvider extends ContentProvider {
             case RANDOM_MOVIE: retCursor = mOpenHelper.getReadableDatabase().query(
                     DatabaseContract.MOVIES_TABLE,
                     null,null,null,null,null,"RANDOM() LIMIT 1"); break;
-            default: throw new UnsupportedOperationException("Unknown Uri" + uri);
+            default: throw new UnsupportedOperationException(getContext().getString(R.string.unknown_uri) + " " + uri);
         }
         retCursor.setNotificationUri(getContext().getContentResolver(),uri);
         return retCursor;
@@ -89,7 +89,7 @@ public class MovieProvider extends ContentProvider {
             case MOVIES:
                 return DatabaseContract.movies_table.CONTENT_TYPE;
             default:
-                throw new UnsupportedOperationException("Unknown uri :" + uri );
+                throw new UnsupportedOperationException(getContext().getString(R.string.unknown_uri) + " " + uri );
         }
     }
 

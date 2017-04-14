@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 Genres genre = (Genres) adapterView.getSelectedItem();
-                Log.v(LOG_TAG, "Name: " + genre.getName() + " ID: " + genre.getId());
                 selectedGenreID = genre.getId();
                 selectedGenreName = genre.getName();
                 //Save genre selection to show when returning to activity from detail page
@@ -311,7 +310,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
         builder.setView(input);
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 zipCode = input.getText().toString();

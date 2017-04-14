@@ -13,6 +13,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,6 +64,15 @@ public class SearchActivity extends AppCompatActivity {
         animatePopcorn();
         //Set delay of search to show animating popcorn
         setDelay();
+
+        //Used same code for admob from my previous BuildItBigger project for Udacity
+        //Currently using test ads for view
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+
     }
 
     public void animatePopcorn() {
@@ -71,7 +83,6 @@ public class SearchActivity extends AppCompatActivity {
             popcornImage.startAnimation(startAnimation);
             getWindow().getDecorView().announceForAccessibility(getString(R.string.accessibility_searching));
         }
-
     }
 
     public void setDelay(){
@@ -208,7 +219,7 @@ public class SearchActivity extends AppCompatActivity {
         builder.setTitle(getString(R.string.no_results_title));
         builder.setMessage(getString(R.string.no_results_message));
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //Return to main page
@@ -228,7 +239,7 @@ public class SearchActivity extends AppCompatActivity {
         builder.setTitle(getString(R.string.error_searching));
         builder.setMessage(getString(R.string.error_searching_message));
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //Return to main page
@@ -417,7 +428,7 @@ public class SearchActivity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(description);
 
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //Intent to start details page and send data of movie over
@@ -428,7 +439,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.i(LOG_TAG, getString(R.string.removing_movie_text));
@@ -458,17 +469,17 @@ public class SearchActivity extends AppCompatActivity {
         String description = localMovie.getLongDescription();
 
         if(title == null){
-            title = "Movie title is currently unavailable";
+            title = getString(R.string.title_unavailable);
         }
 
         if(description == null){
-            description = "Movie description is currently unavailable";
+            description = getString(R.string.overview_unavailable);
         }
 
         builder.setTitle(title);
         builder.setMessage(description);
 
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //Intent to start details page and send data of movie over
@@ -479,7 +490,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.i(LOG_TAG, getString(R.string.removing_movie_text));

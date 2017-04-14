@@ -30,6 +30,7 @@ public class MovieAppWidgetProvider extends AppWidgetProvider {
     public static final int POSTER_PATH = 4;
     public static final int RATING = 5;
     private MovieDetailsDO movie = new MovieDetailsDO();
+    private final String LOG_TAG = MovieAppWidgetProvider.class.getSimpleName();
 
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
@@ -44,11 +45,10 @@ public class MovieAppWidgetProvider extends AppWidgetProvider {
                     null,null,null,null);
             Cursor data = loader.loadInBackground();
 
-            Log.v("DATA COUNT", String.valueOf(data.getCount()));
+            Log.v(LOG_TAG, String.valueOf(data.getCount()));
             //Add data to master list for display
             if(data != null) {
                 data.moveToFirst();
-                Log.v("TAG---", "Higher Data=" + data.getString(MOVIE_TITLE));
             }
 
             testString = data.getString(MOVIE_TITLE);
@@ -74,7 +74,7 @@ public class MovieAppWidgetProvider extends AppWidgetProvider {
                 Picasso.with(context).load(movie.getPoster_path()).into(views, R.id.poster, new int[] {widgetID});
                 views.setTextViewText(R.id.movie_title, testString);
             } else {
-                views.setTextViewText(R.id.movie_title, "No Movies today. Open the app to search!");//context.getString(R.string.widget_message));
+                views.setTextViewText(R.id.movie_title, context.getString(R.string.widget_nomovies));
             }
 
             //AppWidgetManager performs update on current widget
