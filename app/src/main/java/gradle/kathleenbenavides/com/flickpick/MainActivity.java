@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private Location location;
     private double latitude;
     private double longitude;
-    private String zipCode;
+    private String zipCode = "";
     private Spinner categorySpinner;
     //SavedInstanceState Constants
     private final String STAYING_IN_CONTENT = "stayingInContent";
@@ -142,7 +142,20 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     setGreatestDate(stayingIn);
                 }
                 //Method to create and send data in intent
-                sendMessage();
+                //Last check for zipcode in case user allowed cufrent location
+                //but location is off on device
+                if(!stayingIn) {
+                    if (zipCode == null || zipCode.isEmpty()) {
+                        //Show dialog to enter zipcode since no zipcode is there for request
+                        String message = getString(R.string.zipcode_update_settings) + getString(R.string.enter_zipcode_text);
+                        enterZipCodeDialog(message);
+                    } else {
+                        sendMessage();
+                    }
+                } else {
+                    sendMessage();
+                }
+
             }
         });
 
@@ -228,20 +241,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     public void sendMessage(){
         //Intent for Search Activity
-        //Last check for zipcode in case it is empty
-        if(zipCode != null && !zipCode.isEmpty()) {
-            Intent intent = new Intent(this, SearchActivity.class);
-            intent.putExtra("EXTRA_GENRE", selectedGenreID);
-            intent.putExtra("EXTRA_GENRE_NAME", selectedGenreName);
-            intent.putExtra("EXTRA_GREATEST_DATE", greatestDateFormat);
-            intent.putExtra("EXTRA_MOST_CURRENT_DATE", mostCurrentDate);
-            intent.putExtra("STAYING_IN", stayingIn);
-            intent.putExtra("ZIPCODE", zipCode);
-            startActivity(intent);
-        } else {
-            String message = getString(R.string.zipcode_update_settings) + getString(R.string.enter_zipcode_text);
-            enterZipCodeDialog(message);
-        }
+        Intent intent = new Intent(this, SearchActivity.class);
+        intent.putExtra("EXTRA_GENRE", selectedGenreID);
+        intent.putExtra("EXTRA_GENRE_NAME", selectedGenreName);
+        intent.putExtra("EXTRA_GREATEST_DATE", greatestDateFormat);
+        intent.putExtra("EXTRA_MOST_CURRENT_DATE", mostCurrentDate);
+        intent.putExtra("STAYING_IN", stayingIn);
+        intent.putExtra("ZIPCODE", zipCode);
+        startActivity(intent);
 
     }
 

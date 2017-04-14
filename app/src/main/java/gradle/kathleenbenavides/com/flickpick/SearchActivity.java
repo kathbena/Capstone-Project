@@ -102,11 +102,10 @@ public class SearchActivity extends AppCompatActivity {
                     //download data from below url
                     if(stayingIn){
                         //If staying in, construct moviedb request
-                        //Get api key from buildConfig
-                        String apiKey = BuildConfig.moviedb_api_key;
-                        if(apiKey != null) {
+                        String apiKey = getString(R.string.moviedb_api_key);
+                        if(apiKey != null && !apiKey.isEmpty()) {
                             requestURL = getString(R.string.moviedb_popular_url) +
-                                    apiKey +
+                                    getString(R.string.apikey_prefix) + apiKey +
                                     getString(R.string.moviedb_primary_release_date_gte) + greatestDate +
                                     getString(R.string.moviedb_primary_release_date_lte) + mostCurrentDate +
                                     getString(R.string.moviedb_with_genre) + genreID;
@@ -114,10 +113,10 @@ public class SearchActivity extends AppCompatActivity {
                         }
                     } else {
                         //If going out, construct graceNote request
-                        //Get api key from buildConfig
-                        String apiKey = BuildConfig.gracenote_api_key;
-                        if(apiKey != null) {
-                            requestURL = getString(R.string.gracenote_url) + apiKey +
+                        String apiKey = getString(R.string.gracenote_api_key);
+                        if(apiKey != null && !apiKey.isEmpty()) {
+                            requestURL = getString(R.string.gracenote_url) +
+                                    getString(R.string.apikey_prefix)  + apiKey +
                                     getString(R.string.gracenote_startDate) + mostCurrentDate +
                                     getString(R.string.gracenote_zip) + zipCode;
                             startMoviesTheatresTask(requestURL);

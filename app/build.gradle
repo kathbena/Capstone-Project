@@ -18,11 +18,11 @@ android {
         }
     }
 
-    //Get API keys in keystore properties
+    /*//Get API keys in keystore properties
     buildTypes.each{
         it.buildConfigField('String', 'moviedb_api_key', keystoreProperties['moviedb_api_key'])
         it.buildConfigField('String', 'gracenote_api_key', keystoreProperties['gracenote_api_key'])
-    }
+    }*/
 
     compileSdkVersion 25
     buildToolsVersion "25.0.2"

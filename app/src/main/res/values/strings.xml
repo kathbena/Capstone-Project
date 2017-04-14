@@ -3,7 +3,9 @@
     <string name="search_name">Search</string>
     <string name="detail_name">Movie Details</string>
     <string name="theatre_name">Theatres</string>
-
+    <string name="apikey_prefix">api_key=</string>
+    <string name="moviedb_api_key"></string>
+    <string name="gracenote_api_key"></string>
     <string name="moviedb_with_genre">&amp;with_genres=</string>
     <string name="moviedb_primary_release_date.gte">&amp;primary_release_date.gte=</string>
     <string name="moviedb_primary_release_date.lte">&amp;primary_release_date.lte=</string>
