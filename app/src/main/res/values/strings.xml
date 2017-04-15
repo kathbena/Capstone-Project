@@ -55,7 +55,6 @@
     <string name="dialog_yes">YES</string>
     <string name="dialog_no">NO</string>
     <string name="unknown_uri">Unknown Uri </string>
-    <string name="theatre_content">theatreContent</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="widget_title">QUICK FLICK PICK</string>
     <string name="widget_text">Select for random flick</string>

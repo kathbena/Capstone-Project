@@ -20,7 +20,7 @@ public class SelectTheatreActivity extends AppCompatActivity{
     private ListView listView;
     private ArrayList<String> theatreNames;
     //SavedInstanceState Constants
-    private final String THEATRE_CONTENT = getString(R.string.theatre_content);
+    private final String THEATRE_CONTENT = "theatreContent";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
